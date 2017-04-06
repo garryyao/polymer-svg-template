@@ -1,10 +1,13 @@
 # Polymer SVG Template poly-fill
 
-Templates inside SVG won't work in polymer-1.0 without this poly-fill, include this script on top of your element's `<script>` tag, it must be evaluated before calling Polymer.
+When defining a custom element in Polymer, `<template>` wouldn't work inside <svg> [won't work](https://github.com/Polymer/polymer/issues/1976), load this poly-fill before calling Polymer factory, shall fix it.
+
+This should work with polymer 2.0 as well.
  
 ## Usage 
  
  ```!html
+<link rel="import" href="../bower_components/polymer-svg-template/polymer-svg-template.html"/>
  <dom-module id="my-svg-template">
 	 <template>
 	 	<svg>
@@ -14,8 +17,12 @@ Templates inside SVG won't work in polymer-1.0 without this poly-fill, include t
 	 	</svg>
 	 </template>
 </dom-module>
- <script src="../polymer-svg-template/index.js"></script>
- <script>
- 	Polymer({...})
+<script>
+	//  Polyfill all <template>s inside of the containing svg element.
+	PolymerSvgTemplate('my-svg-template');
+ 	Polymer({
+ 		is: 'my-svg-template'
+ 		...
+ 	})
  </script>
  ```

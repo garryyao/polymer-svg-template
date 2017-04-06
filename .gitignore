@@ -1,0 +1,16 @@
+# IntelliJ project files
+.idea
+*.iml
+
+# OS generated files #
+.DS_Store?
+ehthumbs.db
+Thumbs.db
+
+# ldOS generated files #
+.DS_Store?
+ehthumbs.db
+Thumbs.db
+
+# node modules
+node_modules/
