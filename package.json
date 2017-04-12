@@ -1,0 +1,30 @@
+{
+  "name": "polymer-svg-template",
+  "version": "1.0.2",
+  "description": "Shim for template in Polymer SVG",
+  "main": "polymer-svg-template.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garryyao/polymer-svg-template.git"
+  },
+  "keywords": [
+    "polymer",
+    "svg",
+    "template",
+    "webcomponents"
+  ],
+  "author": "Garry Yao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/garryyao/polymer-svg-template/issues"
+  },
+  "homepage": "https://github.com/garryyao/polymer-svg-template#readme"
+}
