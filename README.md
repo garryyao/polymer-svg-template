@@ -1,8 +1,8 @@
 # Polymer SVG Template poly-fill
 
-When defining a custom element in Polymer, `<template>` wouldn't work inside <svg> [won't work](https://github.com/Polymer/polymer/issues/1976), load this poly-fill before calling Polymer factory, shall fix it.
+When defining a custom element in Polymer, using any `<template>` element (dom-if/dom-repeat) in <svg> [won't work](https://github.com/Polymer/polymer/issues/1976) in some browsers, load this shim before calling Polymer factory, shall make it work properly cross-browsers.
 
-This should work with polymer 2.0 as well.
+This shim should work with polymer 2.0 as well.
  
 ## Usage 
  
@@ -18,7 +18,7 @@ This should work with polymer 2.0 as well.
 	 </template>
 </dom-module>
 <script>
-	//  Polyfill all <template>s inside of the containing svg element.
+	//  Polyfill all <template> elements inside of any <svg> container within
 	PolymerSvgTemplate('my-svg-template');
  	Polymer({
  		is: 'my-svg-template'
