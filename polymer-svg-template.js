@@ -25,7 +25,17 @@
 
   'use strict';
   return function templateInSvg(name) {
-    var doc = document.currentScript.ownerDocument;
+    var ua = window.navigator.userAgent;
+
+    // IE10-11 does not need this fix.
+    if (/MSIE /.test(ua) || /Trident\//.test(ua)) {
+      return;
+    }
+
+    // owner document of this import module
+    var doc = window.currentImport;
+    var ns = doc.body.namespaceURI;
+
     var template = Polymer.DomModule.import(name, 'template');
     if (template) {
       walkTemplate(template._content || template.content);
@@ -65,7 +75,7 @@
         if (node.localName === 'svg') {
           walkTemplate(node);
         } else if (node.localName === 'template' && !node.hasAttribute('preserve-content') &&
-          node.namespaceURI !== template.namespaceURI) {
+          node.namespaceURI !== ns) {
           node = upgradeTemplate(node);
           walkTemplate(node._content || node.content);
           treeWalker.currentNode = node;
