@@ -33,7 +33,7 @@
     }
 
     // owner document of this import module
-    var doc = window.currentImport;
+    var doc = document.currentScript.ownerDocument;
     var ns = doc.body.namespaceURI;
 
     var template = Polymer.DomModule.import(name, 'template');
