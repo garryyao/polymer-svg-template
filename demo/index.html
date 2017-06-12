@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>Polymer SVG template</title>
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+<!-- <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+<script src="https://d3js.org/d3-ease.v1.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+<script src="https://d3js.org/d3-selection.v1.min.js"></script>
+<script src="https://d3js.org/d3-timer.v1.min.js"></script>
+<script src="https://d3js.org/d3-transition.v1.min.js"></script> -->
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../../paper-input/paper-input.html">
+  <link rel="import" href="../polymer-svg-template.html">
+  <link rel="import" href="svg-demo-zoom.html">
+  <style is="custom-style" include="demo-pages-shared-styles">
+  .centered {
+    min-width: 600px;
+    min-height: 600px;
+  }
+  
+  preignition-logo {
+    /*background: red;*/
+    --flame-color: #80CBC4;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="vertical-section-container centered">
+    <h3>Polymer SVG Template demo</h3>
+    <demo-snippet>
+      <template>
+        <template is="dom-bind" id="app">
+          <paper-input label="zoom level" type="number" step="0.1"  min="0" value="{{zoom}}"></paper-input>
+          <paper-input label="fill" type="string"  value="{{fill}}"></paper-input>
+          <svg-demo-zoom zoom="[[zoom]]">
+            <!-- We circle need to be created in svg namespace, hence the svg element -->
+            <svg>
+              <circle fill$="[[fill]]" cx="100" cy="100" r="100" />
+            </svg>
+          </svg-demo-zoom>
+        </template>
+      </template>
+    </demo-snippet>
+  </div>
+</body>
+<script>
+window.addEventListener('WebComponentsReady', function() {
+  app.zoom = 0.9;
+  app.fill="red";
+
+});
+</script>
+
+</html>
