@@ -1,0 +1,51 @@
+<link rel="import" href="../polymer/polymer.html">
+<!--
+Handlinz zoom with svg
+-->
+<dom-module id="svg-demo-zoom">
+  <template>
+    <style>
+    circle {
+      fill: green;
+    }
+    </style>
+    <svg viewBox="0 0 200 200">
+      <g id="zoom" transform$="scale([[zoom]])">
+        <slot></slot>
+        <template is="dom-repeat" items="[[repeat]]">
+          <circle cx$="[[item]]0" cy$="[[item]]0" r="20"></circle>
+        </template>
+      </g>
+    </svg>
+  </template>
+  <script>
+  // just for d3.interpole
+
+  PolymerSvgTemplate('svg-demo-zoom');
+  Polymer({
+    is: 'svg-demo-zoom',
+    properties: {
+      /* 
+       * `zoom` the zoom factor
+       */
+      zoom: {
+        type: Number,
+        value: 0.9,
+        observer: '_observeZoom'
+      },
+
+      /* 
+       * `repeat` 
+       */
+      repeat: {
+        type: Array,
+        value: [2, 5, 10, 20]
+      }
+    },
+
+    _observeZoom: function(zoom, old) {
+      // d3.select(this.$.zoom).transition().attr('transform', 'scale('+ zoom + ')')
+    }
+  });
+  </script>
+</dom-module>
